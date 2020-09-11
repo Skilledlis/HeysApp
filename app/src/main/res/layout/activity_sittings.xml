@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SittingsActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/profile"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+
+    <EditText
+        android:id="@+id/set_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_image"
+        android:hint="Name"
+        android:textAlignment="center"
+        android:background="@drawable/edi_text"
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:drawableStart="@drawable/edit"/>
+
+    <EditText
+        android:id="@+id/set_user_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/set_user_name"
+        android:hint="Hi there! I'm Using WhatApp"
+        android:textAlignment="center"
+        android:background="@drawable/edi_text"
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:drawableStart="@drawable/status"/>
+
+    <Button
+        android:id="@+id/save_user_inf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/set_user_status"
+        android:text="Save"
+        android:textAlignment="center"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:drawableStart="@drawable/save"/>
+
+</RelativeLayout>

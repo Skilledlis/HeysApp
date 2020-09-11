@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_find_people"
+        android:title="Поиск"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/menu_create_group"
+        android:title="Создать группу"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/menu_sitings"
+        android:title="Настройки"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/menu_logout"
+        android:title="Выйти"
+        app:showAsAction="never"
+        />
+
+</menu>

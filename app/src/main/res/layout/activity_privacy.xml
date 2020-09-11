@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PrivacyActivity">
+
+    <Button
+        android:id="@+id/privacy_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:text="Правила пользования и политика конфиденциаольности"/>
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/privacy_button"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="50dp"/>
+
+    <Button
+        android:id="@+id/back_privacy_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Вернуться назад"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

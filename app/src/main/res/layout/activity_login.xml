@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <Button
+        android:id="@+id/login_title_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:text="Введите свой номер телефона"
+        android:textAllCaps="false"
+        android:textSize="17sp"
+        android:maxLines="1"/>
+
+    <TextView
+        android:id="@+id/text_view_title1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HeysApp отправит SMS-сообщение, чтобы подтвердить Ваш номер телефона"
+        android:layout_below="@+id/login_title_button"
+        android:padding="20dp"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/login_phone_input"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:hint="номер телефона"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/text_view_title1"/>
+
+    <TextView
+        android:id="@+id/text_view_title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ваш мобильный оператор может взимать плату за SMS"
+        android:layout_below="@+id/login_phone_input"
+        android:padding="20dp"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/send_sms_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Отправить SMS"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:padding="7dp"
+        android:layout_below="@+id/text_view_title2"/>
+
+    <EditText
+        android:id="@+id/login_verification_input"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Введите код подтверждения"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/text_view_title1"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/sms_verification_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Подтвердить код"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:padding="7dp"
+        android:layout_below="@+id/text_view_title2"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Регистрация с EMAIL"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:padding="7dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"/>
+
+</RelativeLayout>

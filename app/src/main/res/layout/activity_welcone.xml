@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomeActivity">
+
+    <TextView
+        android:id="@+id/welcome_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome HeysApp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/wa_1"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/welcome_text_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap &#34;Agree and continue&#34; to accept the "
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/privacy_text_view"/>
+
+    <TextView
+        android:id="@+id/privacy_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HeysApp Term of Service and Privecy Policy."
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_bright"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/agree_button" />
+
+    <Button
+        android:id="@+id/agree_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_alignParentBottom="true"
+        android:textSize="16sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:text="Agree and continue"/>
+
+</RelativeLayout>

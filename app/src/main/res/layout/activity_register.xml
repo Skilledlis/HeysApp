@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:id="@+id/linerlayout_registeractivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/f75d94874d855a7fcfcc922d89ac5e80" />
+
+        <EditText
+            android:id="@+id/email_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email: "
+            android:layout_margin="15dp"
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:background="@drawable/edi_text"
+            android:textColor="@android:color/black"/>
+
+        <EditText
+            android:id="@+id/password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password: "
+            android:layout_margin="15dp"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:background="@drawable/edi_text"
+            android:textColor="@android:color/black"/>
+
+        <Button
+            android:id="@+id/register_email_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Регистрация"
+            android:layout_margin="15dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/login_email_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Войти"
+            android:layout_margin="15dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/change_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="У вас есть аккаунт, войти"
+            android:textSize="20sp"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

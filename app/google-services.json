@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "730453018458",
+    "firebase_url": "https://heysapp-aa84d.firebaseio.com",
+    "project_id": "heysapp-aa84d",
+    "storage_bucket": "heysapp-aa84d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730453018458:android:92bd31e9b6f01708e15563",
+        "android_client_info": {
+          "package_name": "com.example.heysapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730453018458-1blkg8h558n9hka6jsbogthk1me907f0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbcwl8eOKDN7O7d5nhETCmIgOSRGIku0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730453018458-1blkg8h558n9hka6jsbogthk1me907f0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
