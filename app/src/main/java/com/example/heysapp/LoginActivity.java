@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,12 +42,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        sendSmsButton = (Button) findViewById(R.id.send_sms_button);
-        verificationButton = (Button) findViewById(R.id.sms_verification_button);
-        registerButton = (Button)findViewById(R.id.register_button);
-        phoneEditText = (EditText) findViewById(R.id.login_phone_input);
-        verificationEditText = (EditText) findViewById(R.id.login_verification_input);
-        tv2 = (TextView) findViewById(R.id.text_view_title2);
+        sendSmsButton = findViewById(R.id.send_sms_button);
+        verificationButton = findViewById(R.id.sms_verification_button);
+        registerButton = findViewById(R.id.register_button);
+        phoneEditText = findViewById(R.id.login_phone_input);
+        verificationEditText = findViewById(R.id.login_verification_input);
+        tv2 = findViewById(R.id.text_view_title2);
         mAuth = FirebaseAuth.getInstance();
         loadingBar = new ProgressDialog(this);
 
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
-            public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 signInWithPhoneAuthCredential(phoneAuthCredential);
             }
 
@@ -155,6 +155,6 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-    };
+    }
 
 }

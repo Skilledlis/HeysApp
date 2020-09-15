@@ -14,10 +14,14 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -35,14 +39,16 @@ public class SittingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sittings);
 
-        saveInfBtn = (Button)findViewById(R.id.save_user_inf);
-        userNameET = (EditText)findViewById(R.id.set_user_name);
-        statusET = (EditText)findViewById(R.id.set_user_status);
-        circleImageView = (CircleImageView)findViewById(R.id.profile_image);
+        saveInfBtn = findViewById(R.id.save_user_inf);
+        userNameET = findViewById(R.id.set_user_name);
+        statusET = findViewById(R.id.set_user_status);
+        circleImageView = findViewById(R.id.profile_image);
 
         mAuth = FirebaseAuth.getInstance();
-        currentUserID = mAuth.getCurrentUser().getUid();
+        currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         rootRef = FirebaseDatabase.getInstance().getReference();
+
+        userNameET.setVisibility(View.INVISIBLE);
         
         saveInfBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +56,10 @@ public class SittingsActivity extends AppCompatActivity {
                 UpdateInformation();
             }
         });
+
+        retrieveUserInformation();
     }
+
 
     private void UpdateInformation() {
         String setName = userNameET.getText().toString();
@@ -78,11 +87,37 @@ public class SittingsActivity extends AppCompatActivity {
                                 startActivity(mainIntent);
                             }
                             else {
-                                String message = task.getException().toString();
+                                String message = Objects.requireNonNull(task.getException()).toString();
                                 Toast.makeText(SittingsActivity.this, "Произошла ошибка: "+ message, Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
         }
+    }
+
+    private void retrieveUserInformation() {
+        rootRef.child("Users").child(currentUserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists() && dataSnapshot.hasChild("name")){
+                    String retrieveUserName = Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
+                    String retrieveUserStatus = Objects.requireNonNull(dataSnapshot.child("status").getValue()).toString();
+
+                    userNameET.setText(retrieveUserName);
+                    statusET.setText(retrieveUserStatus);
+
+                }
+                else {
+                    userNameET.setVisibility(View.VISIBLE);
+                    Toast.makeText(SittingsActivity.this, "Введите своё имя", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }

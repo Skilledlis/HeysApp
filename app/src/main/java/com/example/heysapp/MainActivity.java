@@ -39,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
+        toolbar = findViewById(R.id.main_page_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("HeysApp");
 
-        viewPager = (ViewPager) findViewById(R.id.main_tabs_pager);
+        viewPager = findViewById(R.id.main_tabs_pager);
         tabsAccessorAdapter = new TabsAccessorAdapter(getSupportFragmentManager());
         viewPager.setAdapter(tabsAccessorAdapter);
-        tabLayout = (TabLayout) findViewById(R.id.main_tabs);
+        tabLayout = findViewById(R.id.main_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         mAuth = FirebaseAuth.getInstance();
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("name").exists()){
-                    Toast.makeText(MainActivity.this, "Привет", Toast.LENGTH_SHORT).show();
+
                 }else {
                     Intent settingsIntent = new Intent(MainActivity.this, SittingsActivity.class);
                     startActivity(settingsIntent);
