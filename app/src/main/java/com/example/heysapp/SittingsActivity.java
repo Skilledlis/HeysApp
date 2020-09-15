@@ -1,9 +1,12 @@
 package com.example.heysapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,6 +22,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -34,6 +42,9 @@ public class SittingsActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference rootRef;
 
+    private static final int GALLERY_PICK = 1;
+    private StorageReference UserProfileImageRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +59,8 @@ public class SittingsActivity extends AppCompatActivity {
         currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         rootRef = FirebaseDatabase.getInstance().getReference();
 
+        UserProfileImageRef = FirebaseStorage.getInstance().getReference().child("Profile Images");
+
         userNameET.setVisibility(View.INVISIBLE);
         
         saveInfBtn.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +71,16 @@ public class SittingsActivity extends AppCompatActivity {
         });
 
         retrieveUserInformation();
+
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, GALLERY_PICK);
+            }
+        });
     }
 
 
@@ -92,6 +115,40 @@ public class SittingsActivity extends AppCompatActivity {
                             }
                         }
                     });
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode==GALLERY_PICK && resultCode==RESULT_OK && data!=null){
+            Uri imageUri = data.getData();
+
+            CropImage.activity()
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1,1)
+                    .start(this);
+        }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+
+            if (resultCode==RESULT_OK){
+            Uri resultUri = result.getUri();
+            StorageReference filePath = UserProfileImageRef.child(currentUserID + ".jpg");
+            filePath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(SittingsActivity.this, "Your profile image saved", Toast.LENGTH_SHORT).show();
+                    }else {
+                        String massage = task.getException().toString();
+                        Toast.makeText(SittingsActivity.this, "Error: " + massage, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            }
         }
     }
 
